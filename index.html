@@ -423,6 +423,48 @@
   .card:hover .card-img img {
     filter: brightness(1) saturate(1.15);
   }
+
+  /* Tags */
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 1px;
+    border: 1px solid;
+  }
+  .tag-flavor {
+    color: var(--cream-dim);
+    border-color: rgba(240,232,216,0.2);
+    background: rgba(240,232,216,0.05);
+  }
+  .tag-pedigree-classic {
+    color: var(--gold);
+    border-color: rgba(212,170,90,0.4);
+    background: rgba(212,170,90,0.06);
+  }
+  .tag-pedigree-modern {
+    color: #9abfcf;
+    border-color: rgba(154,191,207,0.4);
+    background: rgba(154,191,207,0.06);
+  }
+
+  .filter-row-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+
 </style>
 </head>
 <body>
@@ -450,15 +492,27 @@
       </svg>
       <input type="text" id="search" placeholder="Search cocktails or ingredients…" autocomplete="off">
     </div>
-    <div class="filter-chips">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="gin">Gin</button>
-      <button class="chip" data-filter="whiskey">Bourbon / Rye</button>
-      <button class="chip" data-filter="scotch">Scotch</button>
-      <button class="chip" data-filter="rum">Rum</button>
-      <button class="chip" data-filter="mezcal">Mezcal / Tequila</button>
-      <button class="chip" data-filter="vodka">Vodka</button>
-      <button class="chip" data-filter="misc">Misc</button>
+    <div class="filter-row-label">By Spirit</div>
+    <div class="filter-chips" id="spirit-chips">
+      <button class="chip active" data-filter="all" data-group="spirit">All</button>
+      <button class="chip" data-filter="gin" data-group="spirit">Gin</button>
+      <button class="chip" data-filter="whiskey" data-group="spirit">Bourbon / Rye</button>
+      <button class="chip" data-filter="scotch" data-group="spirit">Scotch</button>
+      <button class="chip" data-filter="rum" data-group="spirit">Rum</button>
+      <button class="chip" data-filter="mezcal" data-group="spirit">Mezcal / Tequila</button>
+      <button class="chip" data-filter="vodka" data-group="spirit">Vodka</button>
+      <button class="chip" data-filter="misc" data-group="spirit">Misc</button>
+    </div>
+    <div class="filter-row-label" style="margin-top:10px">By Taste</div>
+    <div class="filter-chips" id="taste-chips">
+      <button class="chip active" data-filter="all" data-group="taste">All</button>
+      <button class="chip" data-filter="refreshing" data-group="taste">Refreshing</button>
+      <button class="chip" data-filter="balanced" data-group="taste">Balanced</button>
+      <button class="chip" data-filter="boozy" data-group="taste">Boozy</button>
+      <button class="chip" data-filter="bitter" data-group="taste">Bitter</button>
+      <button class="chip" data-filter="sweet" data-group="taste">Sweet</button>
+      <button class="chip" data-filter="smoky" data-group="taste">Smoky</button>
+      <button class="chip" data-filter="herbal" data-group="taste">Herbal</button>
     </div>
   </div>
 </div>
@@ -469,11 +523,12 @@
   <div class="grid" id="grid">
 
     <!-- BEE'S KNEES -->
-    <div class="card" data-spirits="gin" style="animation-delay:0.05s">
+    <div class="card" data-tags="refreshing" data-spirits="gin" style="animation-delay:0.05s">
       <div class="card-header">
         <div>
           <div class="card-name">Bee's Knees</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -498,11 +553,12 @@
     </div>
 
     <!-- BOULEVARDIER -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.1s">
+    <div class="card" data-tags="boozy bitter" data-spirits="whiskey" style="animation-delay:0.1s">
       <div class="card-header">
         <div>
           <div class="card-name">Boulevardier</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -527,11 +583,12 @@
     </div>
 
     <!-- DAIQUIRI -->
-    <div class="card" data-spirits="rum" style="animation-delay:0.15s">
+    <div class="card" data-tags="refreshing" data-spirits="rum" style="animation-delay:0.15s">
       <div class="card-header">
         <div>
           <div class="card-name">Daiquiri</div>
           <div class="card-spirit">Rum</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -556,11 +613,12 @@
     </div>
 
     <!-- DIVISION BELL -->
-    <div class="card" data-spirits="mezcal" style="animation-delay:0.2s">
+    <div class="card" data-tags="refreshing bitter" data-spirits="mezcal" style="animation-delay:0.2s">
       <div class="card-header">
         <div>
           <div class="card-name">Division Bell</div>
           <div class="card-spirit">Mezcal / Tequila</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -586,11 +644,12 @@
     </div>
 
     <!-- ENZONI -->
-    <div class="card" data-spirits="gin" style="animation-delay:0.25s">
+    <div class="card" data-tags="refreshing bitter" data-spirits="gin" style="animation-delay:0.25s">
       <div class="card-header">
         <div>
           <div class="card-name">Enzoni</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -616,11 +675,12 @@
     </div>
 
     <!-- ESPRESSO MARTINI -->
-    <div class="card" data-spirits="vodka" style="animation-delay:0.3s">
+    <div class="card" data-tags="sweet boozy" data-spirits="vodka" style="animation-delay:0.3s">
       <div class="card-header">
         <div>
           <div class="card-name">Espresso Martini</div>
           <div class="card-spirit">Vodka</div>
+          <div class="card-tags"><span class="tag tag-flavor">Sweet</span><span class="tag tag-flavor">Boozy</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -646,11 +706,12 @@
     </div>
 
     <!-- FINAL WARD -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.35s">
+    <div class="card" data-tags="balanced herbal" data-spirits="whiskey" style="animation-delay:0.35s">
       <div class="card-header">
         <div>
           <div class="card-name">Final Ward</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -676,11 +737,12 @@
     </div>
 
     <!-- IMPROVED WHISKEY COCKTAIL -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.4s">
+    <div class="card" data-tags="boozy bitter" data-spirits="whiskey" style="animation-delay:0.4s">
       <div class="card-header">
         <div>
           <div class="card-name">Improved Whiskey Cocktail</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -708,11 +770,12 @@
     </div>
 
     <!-- JASMINE -->
-    <div class="card" data-spirits="gin" style="animation-delay:0.45s">
+    <div class="card" data-tags="bitter" data-spirits="gin" style="animation-delay:0.45s">
       <div class="card-header">
         <div>
           <div class="card-name">Jasmine</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -738,11 +801,12 @@
     </div>
 
     <!-- LAST WORD -->
-    <div class="card" data-spirits="gin" style="animation-delay:0.5s">
+    <div class="card" data-tags="balanced herbal" data-spirits="gin" style="animation-delay:0.5s">
       <div class="card-header">
         <div>
           <div class="card-name">Last Word</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -768,11 +832,12 @@
     </div>
 
     <!-- LEFT HAND -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.55s">
+    <div class="card" data-tags="boozy bitter" data-spirits="whiskey" style="animation-delay:0.55s">
       <div class="card-header">
         <div>
           <div class="card-name">Left Hand</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -798,11 +863,12 @@
     </div>
 
     <!-- MANHATTAN -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.6s">
+    <div class="card" data-tags="boozy" data-spirits="whiskey" style="animation-delay:0.6s">
       <div class="card-header">
         <div>
           <div class="card-name">Manhattan</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -827,11 +893,12 @@
     </div>
 
     <!-- MARGARITA -->
-    <div class="card" data-spirits="mezcal" style="animation-delay:0.65s">
+    <div class="card" data-tags="refreshing" data-spirits="mezcal" style="animation-delay:0.65s">
       <div class="card-header">
         <div>
           <div class="card-name">Margarita</div>
           <div class="card-spirit">Mezcal / Tequila</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -856,11 +923,12 @@
     </div>
 
     <!-- NAKED AND FAMOUS -->
-    <div class="card" data-spirits="mezcal" style="animation-delay:0.7s">
+    <div class="card" data-tags="balanced smoky" data-spirits="mezcal" style="animation-delay:0.7s">
       <div class="card-header">
         <div>
           <div class="card-name">Naked and Famous</div>
           <div class="card-spirit">Mezcal / Tequila</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Smoky</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -885,11 +953,12 @@
     </div>
 
     <!-- NAUGHTY DOG -->
-    <div class="card" data-spirits="rum" style="animation-delay:0.75s">
+    <div class="card" data-tags="sweet" data-spirits="rum" style="animation-delay:0.75s">
       <div class="card-header">
         <div>
           <div class="card-name">Naughty Dog</div>
           <div class="card-spirit">Rum</div>
+          <div class="card-tags"><span class="tag tag-flavor">Sweet</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -915,11 +984,12 @@
     </div>
 
     <!-- NEGRONI -->
-    <div class="card" data-spirits="gin" style="animation-delay:0.8s">
+    <div class="card" data-tags="bitter" data-spirits="gin" style="animation-delay:0.8s">
       <div class="card-header">
         <div>
           <div class="card-name">Negroni</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -944,11 +1014,12 @@
     </div>
 
     <!-- OLD FASHIONED -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.85s">
+    <div class="card" data-tags="boozy" data-spirits="whiskey" style="animation-delay:0.85s">
       <div class="card-header">
         <div>
           <div class="card-name">Old Fashioned</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -973,11 +1044,12 @@
     </div>
 
     <!-- PAPER PLANE -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:0.9s">
+    <div class="card" data-tags="balanced bitter" data-spirits="whiskey" style="animation-delay:0.9s">
       <div class="card-header">
         <div>
           <div class="card-name">Paper Plane</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1003,11 +1075,12 @@
     </div>
 
     <!-- PENICILLIN -->
-    <div class="card" data-spirits="scotch" style="animation-delay:0.95s">
+    <div class="card" data-tags="smoky balanced" data-spirits="scotch" style="animation-delay:0.95s">
       <div class="card-header">
         <div>
           <div class="card-name">Penicillin</div>
           <div class="card-spirit">Scotch</div>
+          <div class="card-tags"><span class="tag tag-flavor">Smoky</span><span class="tag tag-flavor">Balanced</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1034,11 +1107,12 @@
     </div>
 
     <!-- SAZERAC -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:1s">
+    <div class="card" data-tags="boozy bitter" data-spirits="whiskey" style="animation-delay:1s">
       <div class="card-header">
         <div>
           <div class="card-name">Sazerac</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1064,11 +1138,12 @@
     </div>
 
     <!-- SPRITZ -->
-    <div class="card" data-spirits="misc" style="animation-delay:1.05s">
+    <div class="card" data-tags="refreshing bitter" data-spirits="misc" style="animation-delay:1.05s">
       <div class="card-header">
         <div>
           <div class="card-name">Spritz</div>
           <div class="card-spirit">Misc</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1093,11 +1168,12 @@
     </div>
 
     <!-- TOM COLLINS -->
-    <div class="card" data-spirits="gin" style="animation-delay:1.1s">
+    <div class="card" data-tags="refreshing" data-spirits="gin" style="animation-delay:1.1s">
       <div class="card-header">
         <div>
           <div class="card-name">Tom Collins</div>
           <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1123,11 +1199,12 @@
     </div>
 
     <!-- WHISKEY SOUR -->
-    <div class="card" data-spirits="whiskey" style="animation-delay:1.15s">
+    <div class="card" data-tags="balanced" data-spirits="whiskey" style="animation-delay:1.15s">
       <div class="card-header">
         <div>
           <div class="card-name">Whiskey Sour</div>
           <div class="card-spirit">Bourbon / Rye</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1174,8 +1251,9 @@
     });
   });
 
-  // Filter + search
-  let activeFilter = 'all';
+  // Filter + search — additive AND across spirit + taste rows
+  let activeSpiritFilter = 'all';
+  let activeTasteFilter = 'all';
 
   function applyFilters() {
     const query = document.getElementById('search').value.toLowerCase().trim();
@@ -1184,12 +1262,14 @@
 
     cards.forEach(card => {
       const spirits = card.dataset.spirits || '';
+      const tags = card.dataset.tags || '';
       const text = card.innerText.toLowerCase();
 
-      const spiritMatch = activeFilter === 'all' || spirits.includes(activeFilter);
+      const spiritMatch = activeSpiritFilter === 'all' || spirits.includes(activeSpiritFilter);
+      const tasteMatch = activeTasteFilter === 'all' || tags.includes(activeTasteFilter);
       const searchMatch = !query || text.includes(query);
 
-      if (spiritMatch && searchMatch) {
+      if (spiritMatch && tasteMatch && searchMatch) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -1203,11 +1283,20 @@
     empty.classList.toggle('visible', visible === 0);
   }
 
-  document.querySelectorAll('.chip').forEach(chip => {
+  document.querySelectorAll('#spirit-chips .chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('#spirit-chips .chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      activeFilter = chip.dataset.filter;
+      activeSpiritFilter = chip.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll('#taste-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#taste-chips .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTasteFilter = chip.dataset.filter;
       applyFilters();
     });
   });
