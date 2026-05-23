@@ -500,31 +500,32 @@
     <div class="filter-row-label">By Spirit</div>
     <div class="filter-chips" id="spirit-chips">
       <button class="chip active" data-filter="all" data-group="spirit">All</button>
-      <button class="chip" data-filter="gin" data-group="spirit">Gin</button>
       <button class="chip" data-filter="whiskey" data-group="spirit">Bourbon / Rye</button>
-      <button class="chip" data-filter="scotch" data-group="spirit">Scotch</button>
+      <button class="chip" data-filter="gin" data-group="spirit">Gin</button>
       <button class="chip" data-filter="rum" data-group="spirit">Rum</button>
       <button class="chip" data-filter="mezcal" data-group="spirit">Mezcal / Tequila</button>
+      <button class="chip" data-filter="scotch" data-group="spirit">Scotch</button>
       <button class="chip" data-filter="vodka" data-group="spirit">Vodka</button>
+      <button class="chip" data-filter="cognac" data-group="spirit">Cognac / Brandy</button>
       <button class="chip" data-filter="misc" data-group="spirit">Misc</button>
     </div>
     <div class="filter-row-label" style="margin-top:10px">By Taste</div>
     <div class="filter-chips" id="taste-chips">
       <button class="chip active" data-filter="all" data-group="taste">All</button>
+      <button class="chip" data-filter="bitter" data-group="taste">Bitter</button>
+      <button class="chip" data-filter="boozy" data-group="taste">Boozy</button>
       <button class="chip" data-filter="refreshing" data-group="taste">Refreshing</button>
       <button class="chip" data-filter="balanced" data-group="taste">Balanced</button>
-      <button class="chip" data-filter="boozy" data-group="taste">Boozy</button>
-      <button class="chip" data-filter="bitter" data-group="taste">Bitter</button>
       <button class="chip" data-filter="sweet" data-group="taste">Sweet</button>
-      <button class="chip" data-filter="smoky" data-group="taste">Smoky</button>
       <button class="chip" data-filter="herbal" data-group="taste">Herbal</button>
+      <button class="chip" data-filter="smoky" data-group="taste">Smoky</button>
     </div>
   </div>
 </div>
 
 <!-- GRID -->
 <main class="grid-section">
-  <p class="count-line"><span id="count">28</span> cocktails</p>
+  <p class="count-line"><span id="count">31</span> cocktails</p>
   <div class="grid" id="grid">
 
     <!-- BEE'S KNEES -->
@@ -614,6 +615,38 @@
           <p>Strain into a chilled Nick & Nora glass.</p>
         </div>
         <div class="notes-box">A riff on the Carajillo — the Mexican classic of espresso and Licor 43. This version swaps the coffee for liqueur and adds scotch for depth. Deceptively sweet for a whisky drink.</div>
+      </div>
+    </div>
+
+    <!-- CORPSE REVIVER #2 -->
+    <div class="card" data-tags="refreshing herbal" data-spirits="gin" data-pedigree="classic" style="animation-delay:0.2s">
+      <div class="card-header">
+        <div>
+          <div class="card-name">Corpse Reviver #2</div>
+          <div class="card-spirit">Gin</div>
+          <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-classic">Classic</span></div>
+        </div>
+        <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="card-preview">Gin · dry curaçao · Cocchi Americano · lemon · absinthe rinse</div>
+      <div class="card-body">
+        <div class="card-img"><img src="images/corpse-reviver-2.jpg" alt="Corpse Reviver #2"></div>
+
+        <p class="section-label">Ingredients</p>
+        <ul class="ingredients-list">
+          <li>¾ oz gin</li>
+          <li>¾ oz dry curaçao</li>
+          <li>¾ oz Cocchi Americano</li>
+          <li>¾ oz lemon juice</li>
+          <li>Absinthe (for rinse)</li>
+          <li>Lemon peel (garnish)</li>
+        </ul>
+        <p class="section-label">Method</p>
+        <div class="method-text">
+          <p>Spritz the inside of a chilled Nick & Nora glass with absinthe and set aside.</p>
+          <p>Combine remaining ingredients in a shaker. Add ice and shake until well chilled. Strain into the prepared glass and garnish with a lemon peel.</p>
+        </div>
+        <div class="notes-box">A pre-Prohibition classic, originally prescribed as a hangover cure. Cocchi Americano is essential here — it's what gives the drink its distinctive floral bitterness. Don't overdo the absinthe rinse.</div>
       </div>
     </div>
 
@@ -1048,6 +1081,38 @@
       </div>
     </div>
 
+    <!-- MOSQUITO -->
+    <div class="card" data-tags="bitter smoky" data-spirits="mezcal" data-pedigree="experimental" style="animation-delay:0.85s">
+      <div class="card-header">
+        <div>
+          <div class="card-name">Mosquito</div>
+          <div class="card-spirit">Mezcal / Tequila</div>
+          <div class="card-tags"><span class="tag tag-flavor">Bitter</span><span class="tag tag-flavor">Smoky</span><span class="tag tag-pedigree-experimental">Experimental</span></div>
+        </div>
+        <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="card-preview">Mezcal · Campari · ginger syrup · lemon</div>
+      <div class="card-body">
+        <div class="card-img"><img src="images/mosquito.jpg" alt="Mosquito"></div>
+
+        <p class="section-label">Ingredients</p>
+        <ul class="ingredients-list">
+          <li>¾ oz mezcal</li>
+          <li>¾ oz Campari</li>
+          <li>¾ oz ginger syrup</li>
+          <li>¾ oz lemon juice</li>
+          <li>Pinch of salt</li>
+          <li>Candied ginger or ginger slice (garnish)</li>
+        </ul>
+        <p class="section-label">Method</p>
+        <div class="method-text">
+          <p>Combine all ingredients in a shaker. Add ice and shake until well chilled.</p>
+          <p>Strain into a chilled Nick & Nora glass. Garnish with candied ginger or a fresh ginger slice.</p>
+        </div>
+        <div class="notes-box">A Sam Ross original. Ginger syrup: blend equal parts by volume rough-chopped ginger (no need to peel), boiling water, and sugar until smooth. Strain through a cheesecloth and refrigerate.</div>
+      </div>
+    </div>
+
     <!-- NAKED AND FAMOUS -->
     <div class="card" data-tags="bitter smoky" data-spirits="mezcal" data-pedigree="modern" style="animation-delay:0.7s">
       <div class="card-header">
@@ -1231,6 +1296,37 @@
           <p>Let the mixture rest for 5 minutes — this allows it to thicken slightly. Pour into chilled mugs or glasses and garnish with cherries.</p>
         </div>
         <div class="notes-box">Makes 2 servings. Crème of coconut (such as Coco López) is sweetened — don't substitute coconut cream or coconut milk.</div>
+      </div>
+    </div>
+
+    <!-- PARISIAN -->
+    <div class="card" data-tags="boozy balanced" data-spirits="cognac" data-pedigree="modern" style="animation-delay:1.2s">
+      <div class="card-header">
+        <div>
+          <div class="card-name">Parisian</div>
+          <div class="card-spirit">Cognac / Brandy</div>
+          <div class="card-tags"><span class="tag tag-flavor">Boozy</span><span class="tag tag-flavor">Balanced</span><span class="tag tag-pedigree-modern">Modern</span></div>
+        </div>
+        <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="card-preview">Cognac · sweet vermouth · dry curaçao · bitters</div>
+      <div class="card-body">
+        <div class="card-img"><img src="images/parisian.jpg" alt="Parisian"></div>
+
+        <p class="section-label">Ingredients</p>
+        <ul class="ingredients-list">
+          <li>1½ oz cognac</li>
+          <li>1½ oz sweet vermouth</li>
+          <li>¼ oz dry curaçao</li>
+          <li>1 dash Angostura bitters</li>
+          <li>Maraschino cherry (garnish)</li>
+        </ul>
+        <p class="section-label">Method</p>
+        <div class="method-text">
+          <p>Combine all ingredients in a mixing glass. Add cracked ice and stir until well chilled.</p>
+          <p>Strain into a chilled Nick & Nora glass. Drop a cherry directly into the drink.</p>
+        </div>
+        <div class="notes-box">A French riff on the Manhattan — cognac in place of rye gives it a rounder, fruitier character. The dry curaçao adds a subtle orange lift without sweetening the drink.</div>
       </div>
     </div>
 
