@@ -133,6 +133,10 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 14px 24px;
+    transition: transform 0.3s ease;
+  }
+  .filter-section.hide-filters {
+    transform: translateY(-100%);
   }
 
   .filter-inner {
@@ -1577,6 +1581,19 @@
   });
 
   document.getElementById('search').addEventListener('input', applyFilters);
+
+  // Scroll-aware filter bar
+  const filterSection = document.querySelector('.filter-section');
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      filterSection.classList.add('hide-filters');
+    } else {
+      filterSection.classList.remove('hide-filters');
+    }
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 </script>
 </body>
 </html>
