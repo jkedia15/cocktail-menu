@@ -520,6 +520,13 @@
       <button class="chip" data-filter="herbal" data-group="taste">Herbal</button>
       <button class="chip" data-filter="smoky" data-group="taste">Smoky</button>
     </div>
+    <div class="filter-row-label" style="margin-top:10px">By Pedigree</div>
+    <div class="filter-chips" id="pedigree-chips">
+      <button class="chip active" data-filter="all" data-group="pedigree">All</button>
+      <button class="chip" data-filter="classic" data-group="pedigree">Classic</button>
+      <button class="chip" data-filter="modern" data-group="pedigree">Modern</button>
+      <button class="chip" data-filter="experimental" data-group="pedigree">Experimental</button>
+    </div>
   </div>
 </div>
 
@@ -1510,6 +1517,7 @@
   // Filter + search — additive AND across spirit + taste rows
   let activeSpiritFilter = 'all';
   let activeTasteFilter = 'all';
+  let activePedigreeFilter = 'all';
 
   function applyFilters() {
     const query = document.getElementById('search').value.toLowerCase().trim();
@@ -1523,9 +1531,11 @@
 
       const spiritMatch = activeSpiritFilter === 'all' || spirits.includes(activeSpiritFilter);
       const tasteMatch = activeTasteFilter === 'all' || tags.includes(activeTasteFilter);
+      const pedigree = card.dataset.pedigree || '';
+      const pedigreeMatch = activePedigreeFilter === 'all' || pedigree === activePedigreeFilter;
       const searchMatch = !query || text.includes(query);
 
-      if (spiritMatch && tasteMatch && searchMatch) {
+      if (spiritMatch && tasteMatch && pedigreeMatch && searchMatch) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -1553,6 +1563,15 @@
       document.querySelectorAll('#taste-chips .chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       activeTasteFilter = chip.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll('#pedigree-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#pedigree-chips .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activePedigreeFilter = chip.dataset.filter;
       applyFilters();
     });
   });
