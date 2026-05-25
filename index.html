@@ -56,15 +56,25 @@
     padding: 80px 24px 60px;
     border-bottom: 1px solid var(--border);
     overflow: hidden;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(60,40,20,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(40,25,10,0.5) 0%, transparent 50%),
+      repeating-linear-gradient(
+        105deg,
+        transparent,
+        transparent 2px,
+        rgba(212,170,90,0.015) 2px,
+        rgba(212,170,90,0.015) 4px
+      );
   }
 
   .hero::before {
     content: '';
-    position: absolute;
-    top: -60px; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(ellipse, rgba(196,155,80,0.07) 0%, transparent 70%);
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(196,155,80,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.4) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -180,8 +190,13 @@
   .filter-chips {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .filter-chips::-webkit-scrollbar { display: none; }
 
   .chip {
     font-family: 'Josefin Sans', sans-serif;
@@ -403,8 +418,6 @@
   @media (max-width: 600px) {
     .hero { padding: 60px 20px 48px; }
     .grid { grid-template-columns: 1fr; }
-    .filter-chips { gap: 6px; }
-    .chip { font-size: 9px; padding: 5px 11px; }
   }
 
   /* Card photo */
@@ -536,7 +549,7 @@
 
 <!-- GRID -->
 <main class="grid-section">
-  <p class="count-line"><span id="count">31</span> cocktails</p>
+  <p class="count-line"><span id="count">33</span> cocktails</p>
   <div class="grid" id="grid">
 
     <!-- BEE'S KNEES -->
@@ -599,6 +612,34 @@
       </div>
     </div>
 
+    <!-- CARAJILLO -->
+    <div class="card" data-tags="sweet" data-spirits="misc" data-pedigree="classic" style="animation-delay:0.15s">
+      <div class="card-header">
+        <div>
+          <div class="card-name">Carajillo</div>
+          <div class="card-spirit">Licor 43</div>
+          <div class="card-tags"><span class="tag tag-flavor">Sweet</span><span class="tag tag-pedigree-classic">Classic</span></div>
+        </div>
+        <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="card-preview">Licor 43 · espresso</div>
+      <div class="card-body">
+        <div class="card-img"><img src="images/carajillo.jpg" alt="Carajillo"></div>
+
+        <p class="section-label">Ingredients</p>
+        <ul class="ingredients-list">
+          <li>1 oz Licor 43</li>
+          <li>1 double shot of espresso</li>
+        </ul>
+        <p class="section-label">Method</p>
+        <div class="method-text">
+          <p>Add Licor 43 to a rocks glass and stir with a large ice cube to chill.</p>
+          <p>Slowly layer the freshly pulled espresso on top by pouring over the back of a bar spoon. Serve without stirring to preserve the layers.</p>
+        </div>
+        <div class="notes-box">Deceptively sweet on its own — adding 1 oz of a spirit balances it nicely. Tequila, brandy, or rum all work well; ½ oz mezcal adds a smoky edge. Pull the espresso fresh for the best layer and crema.</div>
+      </div>
+    </div>
+
     <!-- CARAJILLO REDUX -->
     <div class="card" data-tags="sweet" data-spirits="scotch" data-pedigree="experimental" style="animation-delay:0.15s">
       <div class="card-header">
@@ -626,6 +667,38 @@
           <p>Strain into a chilled Nick & Nora glass.</p>
         </div>
         <div class="notes-box">A riff on the Carajillo — the Mexican classic of espresso and Licor 43. This version swaps the coffee for liqueur and adds scotch for depth. Deceptively sweet for a whisky drink.</div>
+      </div>
+    </div>
+
+    <!-- CHAMPS-ÉLYSÉES -->
+    <div class="card" data-tags="balanced herbal" data-spirits="cognac" data-pedigree="classic" style="animation-delay:0.2s">
+      <div class="card-header">
+        <div>
+          <div class="card-name">Champs-&Eacute;lys&eacute;es</div>
+          <div class="card-spirit">Cognac / Brandy</div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-classic">Classic</span></div>
+        </div>
+        <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="card-preview">Cognac · green Chartreuse · lemon · bitters</div>
+      <div class="card-body">
+        <div class="card-img"><img src="images/champs-elysees.jpg" alt="Champs-&Eacute;lys&eacute;es"></div>
+
+        <p class="section-label">Ingredients</p>
+        <ul class="ingredients-list">
+          <li>1½ oz cognac</li>
+          <li>½ oz green Chartreuse</li>
+          <li>¾ oz lemon juice</li>
+          <li>¼ oz simple syrup</li>
+          <li>1 dash Angostura bitters</li>
+          <li>Lemon twist (garnish)</li>
+        </ul>
+        <p class="section-label">Method</p>
+        <div class="method-text">
+          <p>Combine all ingredients in a shaker. Add ice and shake until well chilled.</p>
+          <p>Strain into a chilled Nick & Nora glass. Express the lemon twist and garnish.</p>
+        </div>
+        <div class="notes-box">A 1920s Savoy classic. The Chartreuse is assertive here — don't be tempted to add more. Genepy le Chamois works as a substitute if green Chartreuse is unavailable.</div>
       </div>
     </div>
 
@@ -971,12 +1044,12 @@
     </div>
 
     <!-- LAST WORD -->
-    <div class="card" data-tags="balanced herbal" data-spirits="gin" data-pedigree="classic" style="animation-delay:0.5s">
+    <div class="card" data-tags="balanced herbal" data-spirits="gin" data-pedigree="modern" style="animation-delay:0.5s">
       <div class="card-header">
         <div>
           <div class="card-name">Last Word</div>
           <div class="card-spirit">Gin</div>
-          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-classic">Classic</span></div>
+          <div class="card-tags"><span class="tag tag-flavor">Balanced</span><span class="tag tag-flavor">Herbal</span><span class="tag tag-pedigree-modern">Modern</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
       </div>
@@ -1409,7 +1482,7 @@
       <div class="card-header">
         <div>
           <div class="card-name">Spritz</div>
-          <div class="card-spirit">Misc</div>
+          <div class="card-spirit">Prosecco</div>
           <div class="card-tags"><span class="tag tag-flavor">Refreshing</span><span class="tag tag-flavor">Bitter</span><span class="tag tag-pedigree-classic">Classic</span></div>
         </div>
         <svg class="card-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
